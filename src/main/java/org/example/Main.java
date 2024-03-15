@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 //TIP 코드를 <b>실행</b>하려면 <shortcut actionId="Run"/>을(를) 누르거나
@@ -13,6 +12,7 @@ public class Main {
         String menu = "logIn";
         Scanner scanner = new Scanner(System.in);
         LogIn logIn = new LogIn();
+        Ranking ranking = new Ranking();
 
         while (!menu.equals("quit")) {
             if (menu.equals("logIn")) {
@@ -24,7 +24,7 @@ public class Main {
                 if (select == 1) {
                     System.out.print("Input Id : ");
                     int id = scanner.nextInt();
-                    
+
                     if (logIn.findUser(id)) {
                         // ToDo : score
                         menu = "quit";
@@ -46,8 +46,8 @@ public class Main {
             }
 
             else if (menu.equals("ranking")) {
-                // ToDo : Ranking merge
-                menu = "quit";
+                ranking.getRanking();
+                menu = "logIn";
             }
 
             }
@@ -56,6 +56,5 @@ public class Main {
         // ToDo: 1ms 마다 1씩 증가
 
         // ToDo: 높은 순위 검색
-
 
 }
