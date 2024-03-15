@@ -5,23 +5,25 @@ import java.util.*;
 
 public class Ranking {
 
-    // dummy data
     LogIn db = new LogIn();
-    ArrayList<User> userTable = db.getUser();
     ArrayList<User> result;
 
     public void getRanking() {
 
-        result = userTable;
+        result = db.getUser();
 
-        result.sort(Collections.reverseOrder());
+        result.sort(new Comparator<User>() {
+            @Override
+            public int compare(User user1, User user2) {
+                return user2.score - user1.score;
+            }
+        });
 
         int size = Math.min(result.size(), 3);
         result.subList(0, size);
 
         for (int i=0; i<size; i++) {
-            System.out.println("1st : " + result.get(i).id + " : " + result.get(i).score);
+            System.out.println((i+1) + ". id: " + result.get(i).id + ", score : " + result.get(i).score);
         }
-        System.out.println();
     }
 }
