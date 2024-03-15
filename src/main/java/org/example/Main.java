@@ -11,9 +11,6 @@ public class Main {
 
         String menu = "logIn";
         Scanner scanner = new Scanner(System.in);
-        LogIn logIn = new LogIn();
-        Ranking ranking = new Ranking();
-        Score score = new Score();
 
         while (!menu.equals("quit")) {
             switch (menu) {
@@ -27,8 +24,8 @@ public class Main {
                         System.out.print("Input Id : ");
                         int id = scanner.nextInt();
 
-                        if (logIn.findUser(id)) {
-                            score.addScore(id);
+                        if (LogIn.findUser(id)) {
+                            Score.addScore(id);
                             menu = "logIn";
                         } else {
                             System.out.println("\nNot found\n");
@@ -46,11 +43,11 @@ public class Main {
                     }
                 }
                 case "signIn" -> {
-                    logIn.writeUser();
+                    LogIn.writeUser();
                     menu = "logIn";
                 }
                 case "ranking" -> {
-                    ranking.getRanking();
+                    Ranking.getRanking();
                     menu = "logIn";
                 }
             }

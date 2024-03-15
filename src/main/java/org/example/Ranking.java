@@ -5,12 +5,9 @@ import java.util.*;
 
 public class Ranking {
 
-    LogIn db = new LogIn();
-    ArrayList<User> result;
+    static void getRanking() {
 
-    public void getRanking() {
-
-        result = db.getUser();
+        ArrayList<User> result = LogIn.getUser();
 
         result.sort(new Comparator<User>() {
             @Override
